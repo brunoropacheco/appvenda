@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvenda.model.domain.Mecanico;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.service.MecanicoService;
 
 @Order(4)
@@ -28,6 +29,8 @@ public class MecanicoLoader implements ApplicationRunner {
 		String linha = leitura.readLine();
 
 		String[] campos = null;
+		
+		Vendedor vendedor = new Vendedor();
 				
 		while(linha != null) {
 			
@@ -41,6 +44,10 @@ public class MecanicoLoader implements ApplicationRunner {
 			mecanico.setPreco(Float.valueOf(campos[3]));
 			mecanico.setMaterial(campos[4]);
 			mecanico.setMaleavel(Boolean.valueOf(campos[5]));
+			
+			vendedor.setId(Integer.valueOf(campos[6]));
+			
+			mecanico.setVendedor(vendedor);
 			
 			mecanicoService.incluir(mecanico);
 			

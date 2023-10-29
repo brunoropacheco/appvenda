@@ -9,6 +9,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.domain.Vestuario;
 import br.edu.infnet.appvenda.model.service.VestuarioService;
 
@@ -28,6 +29,8 @@ public class VestuarioLoader implements ApplicationRunner {
 		String linha = leitura.readLine();
 
 		String[] campos = null;
+		
+		Vendedor vendedor = new Vendedor();
 				
 		while(linha != null) {
 			
@@ -41,6 +44,10 @@ public class VestuarioLoader implements ApplicationRunner {
 			vestuario.setPreco(Float.valueOf(campos[3]));
 			vestuario.setCor(campos[4]);
 			vestuario.setTamanho(campos[5]);
+			
+			vendedor.setId(Integer.valueOf(campos[6]));
+			
+			vestuario.setVendedor(vendedor);
 			
 			vestuarioService.incluir(vestuario);
 			

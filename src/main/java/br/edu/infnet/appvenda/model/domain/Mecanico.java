@@ -1,5 +1,13 @@
 package br.edu.infnet.appvenda.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TMecanico") //apesar de colocar essas anotacoes, ele vai criar somente a
+							//tabela da mae e colocar todas as colunas e uma coluna type
+//entretanto, nao queremos desse jeito, e vamos definir a heranca na classe mae para criar
+// uma tabela pra cada tipo e as tabelas filhas trazerem os dados da tabela mae
 public class Mecanico extends Produto {
 	
     private String material;

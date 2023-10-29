@@ -13,8 +13,10 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvenda.model.domain.Mecanico;
 import br.edu.infnet.appvenda.model.domain.Produto;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.domain.Vestuario;
 import br.edu.infnet.appvenda.model.service.ProdutoService;
+import br.edu.infnet.appvenda.model.service.VendedorService;
 
 @Order(2)
 @Component //para essa classe ser chamada qnd rodar a aplicacao
@@ -22,6 +24,9 @@ public class ProdutoLoader implements ApplicationRunner{
 	
 	@Autowired //so constroi o objeto abaixo quando nao existe um criado
 	private ProdutoService produtoService;
+	
+	@Autowired //so constroi o objeto abaixo quando nao existe um criado
+	private VendedorService vendedorService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -33,6 +38,8 @@ public class ProdutoLoader implements ApplicationRunner{
 		String linha = leitura.readLine();
 
 		String[] campos = null;
+		
+		Vendedor vendedor = new Vendedor();
 
 		while(linha != null) {
 			
@@ -48,6 +55,10 @@ public class ProdutoLoader implements ApplicationRunner{
 				mecanico.setMaterial(campos[4]);
 				mecanico.setMaleavel(Boolean.valueOf(campos[5]));
 				
+				vendedor.setId(Integer.valueOf(campos[7]));
+				
+				mecanico.setVendedor(vendedor);
+				
 				produtoService.incluir(mecanico);
 				
 				break;
@@ -61,6 +72,10 @@ public class ProdutoLoader implements ApplicationRunner{
 				vestuario.setCor(campos[4]);
 				vestuario.setTamanho(campos[5]);
 				
+				vendedor.setId(Integer.valueOf(campos[7]));
+				
+				vestuario.setVendedor(vendedor);
+				
 				produtoService.incluir(vestuario);
 				
 				break;
@@ -72,8 +87,10 @@ public class ProdutoLoader implements ApplicationRunner{
 			linha = leitura.readLine();
 		}
 		
-		for(Produto produto: produtoService.obterLista()) {
-			System.out.println("[Produto] " + produto);			
+		for (Vendedor v : vendedorService.obterLista()) {
+			for (Produto produto : produtoService.obterLista(v)) {
+				System.out.println("[Produto] kkkkkk " + produto);
+			}
 		}
 		
 		leitura.close();

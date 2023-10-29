@@ -1,5 +1,10 @@
 package br.edu.infnet.appvenda.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity //determina que eh uma classe entidade como o Integer, String, etc
+@Table(name = "TVestuario")
 public class Vestuario extends Produto {
     private String cor;
     private String tamanho;
