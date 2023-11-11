@@ -1,5 +1,7 @@
 package br.edu.infnet.appvenda.model.domain;
 
+import javax.persistence.Column;
+
 //import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,19 +13,29 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 //import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Entity
-@Table(name = "TProduto")
+//@Table(name = "TProduto")
+@Table(name = "TProduto", uniqueConstraints = {@UniqueConstraint(columnNames = {"codigo"})})
+
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
 	
 	@Id //define que essa eh a chave primaria que vai ser incrementado desde 1
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id; // so vai existir essa chave primaria na classe mae; nas classes filhas vai herdar
+	@NotNull
+	@Column(unique = true)
     private int codigo;
 	private String descricao;
+	@Positive
 	private float preco;
+	@NotNull
+	@Column(columnDefinition = "boolean default false")
     private boolean estoque;
     @ManyToOne
     @JoinColumn(name="idVendedor")

@@ -28,4 +28,8 @@ public class MecanicoService {
 		//return mapaMecanico.values();
 		return (Collection<Mecanico>) mecanicoRepository.findAll();
 	}
+	
+	public long obterQtde() {
+		return mecanicoRepository.count();
+	}
 }

@@ -2,11 +2,18 @@ package br.edu.infnet.appvenda.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity //determina que eh uma classe entidade como o Integer, String, etc
 @Table(name = "TVestuario")
 public class Vestuario extends Produto {
+	@Size(min = 2, max = 20, message = "A cor deve ter entre {min} e {max} caracteres.")
     private String cor;
+	@NotNull
+	//@Size(min = 1, max = 1, message = "O tamanho deve ter somente um caracter.")
+	@Pattern(regexp = "^[A-Z]", message = "O tamanho deve ter somente um caracter maiusculo.")
     private String tamanho;
     
     @Override

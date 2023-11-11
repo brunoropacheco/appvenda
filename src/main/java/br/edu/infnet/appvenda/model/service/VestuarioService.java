@@ -28,4 +28,8 @@ public class VestuarioService {
 		//return mapaVestuario.values();
 		return (Collection<Vestuario>) vestuarioRepository.findAll();
 	}
+	
+	public long obterQtde() {
+		return vestuarioRepository.count();
+	}
 }

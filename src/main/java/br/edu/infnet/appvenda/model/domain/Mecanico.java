@@ -2,6 +2,8 @@ package br.edu.infnet.appvenda.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TMecanico") //apesar de colocar essas anotacoes, ele vai criar somente a
@@ -10,7 +12,9 @@ import javax.persistence.Table;
 // uma tabela pra cada tipo e as tabelas filhas trazerem os dados da tabela mae
 public class Mecanico extends Produto {
 	
+	@Size(min = 2, max = 30, message = "O material deve ter entre {min} e {max} caracteres.")
     private String material;
+    @NotNull
     private boolean maleavel;
     
     @Override

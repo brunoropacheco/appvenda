@@ -89,7 +89,7 @@ public class ProdutoLoader implements ApplicationRunner{
 		
 		for (Vendedor v : vendedorService.obterLista()) {
 			for (Produto produto : produtoService.obterLista(v)) {
-				System.out.println("[Produto] kkkkkk " + produto);
+				System.out.println("[Produto] " + produto);
 			}
 		}
 		

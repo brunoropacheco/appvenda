@@ -27,4 +27,8 @@ public class VendedorService {
 		return (Collection<Vendedor>) vendedorRepository.findAll();
 		//return mapaVendedor.values();
 	}
+	
+	public long obterQtde() {
+		return vendedorRepository.count();
+	}
 }

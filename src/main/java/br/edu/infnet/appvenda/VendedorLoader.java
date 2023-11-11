@@ -22,6 +22,7 @@ public class VendedorLoader implements ApplicationRunner{
 	private VendedorService vendedorService;
 
 	@Override
+	//public void run(ApplicationArguments args) throws Exception {
 	public void run(ApplicationArguments args) throws Exception {
 		// TODO Auto-generated method stub
 		

@@ -33,4 +33,8 @@ public class ProdutoService {
 		return (Collection<Produto>) produtoRepository.obterLista(vendedor.getId());
 		//return mapaProduto.values();
 	}
+	
+	public long obterQtde() {
+		return produtoRepository.count();
+	}
 }
