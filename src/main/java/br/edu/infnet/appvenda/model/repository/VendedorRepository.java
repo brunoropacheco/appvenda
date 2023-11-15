@@ -8,4 +8,8 @@ import br.edu.infnet.appvenda.model.domain.Vendedor;
 @Repository
 public interface VendedorRepository extends CrudRepository<Vendedor,Integer> {
 	
+	Vendedor findByCpf(String cpf);
+	
+	//List<Vendedor> findAll(Sort sort);
+	
 }

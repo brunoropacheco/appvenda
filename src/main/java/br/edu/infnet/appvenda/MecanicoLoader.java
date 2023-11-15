@@ -3,6 +3,8 @@ package br.edu.infnet.appvenda;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -49,7 +51,14 @@ public class MecanicoLoader implements ApplicationRunner {
 			
 			mecanico.setVendedor(vendedor);
 			
-			mecanicoService.incluir(mecanico);
+			try {
+				mecanicoService.incluir(mecanico);
+			} catch (ConstraintViolationException e) {
+				FileLogger.logException("ERRO - [MECANICO] " + mecanico + " - " + e.getMessage());
+				System.out.println("ERRO - [MECANICO] " + mecanico);
+			}
+			
+			//mecanicoService.incluir(mecanico);
 			
 			linha = leitura.readLine();
 		}

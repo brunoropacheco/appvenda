@@ -45,12 +45,14 @@
 				<thead class="table-dark">
 					<tr>
 					  <th>${titulo}</th>
+					  <th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var ="item" items = "${listagem}"> <!--  -->
 						<tr>
 						  <td>${item}</td> <!-- traz direto o to string -->
+						  <td><a href="/${rota}/${item.id}/excluir">excluir</a></td> <!-- traz direto o to string -->
 						</tr>
 					</c:forEach>
 				</tbody>

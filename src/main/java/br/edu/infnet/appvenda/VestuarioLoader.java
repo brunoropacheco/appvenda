@@ -3,6 +3,8 @@ package br.edu.infnet.appvenda;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -49,7 +51,14 @@ public class VestuarioLoader implements ApplicationRunner {
 			
 			vestuario.setVendedor(vendedor);
 			
-			vestuarioService.incluir(vestuario);
+			//vestuarioService.incluir(vestuario);
+			
+			try {
+				vestuarioService.incluir(vestuario);
+			} catch (ConstraintViolationException e) {
+				FileLogger.logException("ERRO - [VESTUARIO] " + vestuario + " - " + e.getMessage());
+				System.out.println("ERRO - [VESTUARIO] " + vestuario);
+			}
 			
 			linha = leitura.readLine();
 		}

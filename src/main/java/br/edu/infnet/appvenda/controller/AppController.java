@@ -36,6 +36,7 @@ public class AppController {
 		return "home";
 	}
 	
+	/* FOI PRA DENTRO DE VendedorController
 	@GetMapping(value= "/vendedor/lista")
 	public String obterListaVendedor(Model model) {
 		
@@ -44,7 +45,9 @@ public class AppController {
 		
 		return showHome(model);
 	}
+	*/
 	
+	/* FOI PRA DENTRO DE ProdutoController
 	@GetMapping(value= "/produto/lista")
 	public String obterListaProduto(Model model) {
 		
@@ -53,7 +56,9 @@ public class AppController {
 		
 		return showHome(model);
 	}
+	*/
 	
+	/*
 	@GetMapping(value= "/vestuario/lista")
 	public String obterListaVestuario(Model model) {
 		
@@ -62,7 +67,9 @@ public class AppController {
 		
 		return showHome(model);
 	}
+	*/
 	
+	/*
 	@GetMapping(value= "/mecanico/lista")
 	public String obterListaMecanico(Model model) {
 		
@@ -71,4 +78,5 @@ public class AppController {
 		
 		return showHome(model);
 	}
+	*/
 }

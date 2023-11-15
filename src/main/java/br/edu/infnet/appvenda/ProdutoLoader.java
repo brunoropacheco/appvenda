@@ -5,6 +5,8 @@ import java.io.FileReader;
 //import java.util.HashMap;
 //import java.util.Map;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -59,7 +61,14 @@ public class ProdutoLoader implements ApplicationRunner{
 				
 				mecanico.setVendedor(vendedor);
 				
-				produtoService.incluir(mecanico);
+				//produtoService.incluir(mecanico);
+				
+				try {
+					produtoService.incluir(mecanico);
+				} catch (ConstraintViolationException e) {
+					FileLogger.logException("ERRO - [MECANICO] " + mecanico + " - " + e.getMessage());
+					System.out.println("ERRO - [MECANICO] " + mecanico);
+				}
 				
 				break;
 
@@ -76,7 +85,14 @@ public class ProdutoLoader implements ApplicationRunner{
 				
 				vestuario.setVendedor(vendedor);
 				
-				produtoService.incluir(vestuario);
+				//produtoService.incluir(vestuario);
+				
+				try {
+					produtoService.incluir(vestuario);
+				} catch (ConstraintViolationException e) {
+					FileLogger.logException("ERRO - [VESTUARIO] " + vestuario + " - " + e.getMessage());
+					System.out.println("ERRO - [VESTUARIO] " + vestuario);
+				}
 				
 				break;
 

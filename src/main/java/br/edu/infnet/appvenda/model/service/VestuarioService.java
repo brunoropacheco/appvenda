@@ -24,6 +24,10 @@ public class VestuarioService {
 		vestuarioRepository.save(vestuario);
 	}
 	
+	public void excluir(Integer id) {
+		vestuarioRepository.deleteById(id);
+	}
+	
 	public Collection<Vestuario> obterLista(){	
 		//return mapaVestuario.values();
 		return (Collection<Vestuario>) vestuarioRepository.findAll();

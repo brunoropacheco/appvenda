@@ -44,7 +44,9 @@ public class Produto {
 	@Override
     public String toString() { // esse metodo determina oq ue vai ser impresso quando chamarmos o objeto puro
     	// TODO Auto-generated method stub
-    	return String.format("%d - %s - %d - %.2f - %s - %s", id, descricao, codigo, preco, estoque, vendedor.getNome());
+    	//return String.format("%d - %s - %d - %.2f - %s - %s", id, descricao, codigo, preco, estoque, vendedor.getNome());
+		return String.format("id (%d) - descricao (%s) - codigo (%d) - preco (%.2f) - estoque (%s) - vendedor [%s]", 
+				id, descricao, codigo, preco, estoque, vendedor);
     }
     
 	//Ctrl3 para ggas

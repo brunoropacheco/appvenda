@@ -24,6 +24,10 @@ public class MecanicoService {
 		mecanicoRepository.save(mecanico);
 	}
 	
+	public void excluir(Integer id) {
+		mecanicoRepository.deleteById(id);
+	}
+	
 	public Collection<Mecanico> obterLista(){	
 		//return mapaMecanico.values();
 		return (Collection<Mecanico>) mecanicoRepository.findAll();
